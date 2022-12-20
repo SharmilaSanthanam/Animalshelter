@@ -1,0 +1,64 @@
+[
+    {
+        "id": 1,
+        "Name": "Blacky",
+        "Breed": "Bengal",
+        "Age": "12"
+    },
+    {
+        "id": 2,
+        "Name": "Albie",
+        "Breed": "Cymric",
+        "Age": "3"
+    },
+    {
+        "id": 3,
+        "Name": "Soma",
+        "Breed": "Somali",
+        "Age": "2"
+    },
+    {
+        "id": 4,
+        "Name": "Miso",
+        "Breed": "Singapura",
+        "Age": "7"
+    },
+    {
+        "id": 5,
+        "Name": "Tito",
+        "Breed": "Savannah",
+        "Age": "5"
+    },
+    {
+        "id": 6,
+        "Name": "Mocha",
+        "Breed": "Russian Blue",
+        "Age": "11"
+    },
+    {
+        "id": 7,
+        "Name": "Brownie",
+        "Breed": "Havana Brown",
+        "Age": "3"
+    },
+    {
+        "id": 8,
+        "Name": "Simba",
+        "Breed": "Japanese Bobtail",
+        "Age": "6"
+    },
+    {
+        "id": 9,
+        "Name": "Oliver",
+        "Breed": "Dragon Li",
+        "Age": "10"
+    },
+    {
+        "id": 10,
+        "Name": "Luna",
+        "Breed": "Munchkin",
+        "Age": "9"
+    }
+]
+
+
