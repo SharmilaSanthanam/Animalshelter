@@ -7,6 +7,10 @@ import Adoptpet from './components/Adoptpet';
 import Givepet from './components/Givepet';
 import Petswehave from './components/Petswehave';
 import Contact from './components/contact';
+import { DBConfig } from "./DBConfig";
+import { initDB } from "react-indexed-db";
+
+initDB(DBConfig);
 
 function App() {
 
