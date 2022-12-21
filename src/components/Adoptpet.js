@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-
 import { Box, Grid, NativeSelect, TextField, Button, Card, CardContent, Typography, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import { USER_DATA } from "./data";
 
 const idb =
   window.indexedDB ||
@@ -12,7 +12,6 @@ const idb =
   window.webkitIndexedDB ||
   window.msIndexedDB ||
   window.shimIndexedDB;
-
 
 const createCollectionsInIndexedDB = () => {
   if (!idb) {
@@ -29,7 +28,6 @@ const createCollectionsInIndexedDB = () => {
   };
 
   request.onupgradeneeded = function (event) {
-    // console.log(event);
     const db = request.result;
 
     if (!db.objectStoreNames.contains("userData")) {
@@ -41,7 +39,6 @@ const createCollectionsInIndexedDB = () => {
         unique: false,
       });
     }
-
   };
 
   request.onsuccess = function () {
@@ -49,47 +46,36 @@ const createCollectionsInIndexedDB = () => {
 
     const db = request.result;
 
-    var tx = db.transaction("userData", "readwrite");
+    var tx = db.transaction(["userData"], "readwrite");
     var userData = tx.objectStore("userData");
 
+    USER_DATA.forEach((item) => userData.add(item));
     return tx.complete;
   };
 };
-
 
 const Adoptpet = () => {
 
   const [show, setShow] = useState(true);
   const [allUsers, setAllUsers] = useState([]);
-  const [addUser, setAddUser] = useState(false);
-  // const [pet, setPet] = useState("");
-  // const [breed, setBreed] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState('');
 
-  // const handleChange = (event) => {
-  //   setPet(event.target.value);
-  //   setBreed(event.target.value);
-  // };
   useEffect(() => {
     createCollectionsInIndexedDB();
     getAllData();
-
   }, []);
 
   const getAllData = () => {
     const dbPromise = idb.open("AdoptpetData", 2);
-    const filteredRecords = [];
 
     dbPromise.onsuccess = () => {
       const db = dbPromise.result;
 
-      var tx = db.transaction("userData", "readonly");
+      var tx = db.transaction(["userData"], "readonly");
       var userData = tx.objectStore("userData");
       const users = userData.getAll();
-
-      const dataIdIndex = userData.index("users");
 
       users.onsuccess = (query) => {
         setAllUsers(query.srcElement.result);
@@ -100,7 +86,6 @@ const Adoptpet = () => {
       };
 
       tx.oncomplete = function (event) {
-        // setAllUsers(users);
         db.close();
       };
     };
@@ -108,26 +93,20 @@ const Adoptpet = () => {
 
   const handleSubmit = (event) => {
     const dbPromise = idb.open("AdoptpetData", 2);
-    // console.log(userData);
     if (name && email && phone) {
       dbPromise.onsuccess = () => {
         const db = dbPromise.result;
 
-        var tx = db.transaction("userData", "readwrite");
+        var tx = db.transaction(["userData"], "readwrite");
         var userData = tx.objectStore("userData");
-
-        // console.log(userData);
 
         const users = userData.put({
           id: allUsers?.length + 1,
-          // pet,
-          // breed,
           name,
           email,
           phone,
         });
 
-        // console.log("add");
         users.onsuccess = () => {
           tx.oncomplete = () => {
             db.close();
@@ -140,21 +119,20 @@ const Adoptpet = () => {
         }
       }
     };
-
   };
-
 
   return (
 
     <Grid sx={{ bgcolor: "#EBF9FF" }}>
       <Card style={{ backgroundColor: "#EBF9FF", maxWidth: 580, padding: "20px 5px", margin: "0 auto" }}>
+
         <IconButton
           style={{ position: "absolute", maxWidth: "580", marginLeft: "15rem" }}
           onClick={() => setShow(false)}
         >
           <NavLink to="/"><CloseIcon /></NavLink>
-
         </IconButton>
+
         <CardContent>
           <Typography sx={{ marginBottom: "1rem" }} gutterBottom variant="h4" align="start">
             Adopt a pet
@@ -163,6 +141,7 @@ const Adoptpet = () => {
           <Typography sx={{ marginBottom: "1rem" }} gutterBottom variant="h5" align="start">
             What pet do you want to adopt ?
           </Typography>
+
           <form>
             <Box sx={{ marginBottom: "1rem", marginRight: "16rem" }}>
               <FormControl sx={{ width: "100%" }} >
@@ -170,7 +149,6 @@ const Adoptpet = () => {
                   <span style={{ color: "black" }}>Pet type</span>
                 </InputLabel>
                 <NativeSelect
-                  //  onChange={(e) => this.setPet({ value: e.target.value })}
                   style={{ border: "solid 2px lightgrey", borderBottom: "none" }}
                   defaultValue={30}
                   inputProps={{
@@ -193,7 +171,6 @@ const Adoptpet = () => {
                   <span style={{ color: "black" }}>Breed</span>
                 </InputLabel>
                 <NativeSelect
-                  // onChange={(e) => this.setBreed({ value: e.target.value })}
                   style={{ border: "solid 2px lightgrey", borderBottom: "none" }}
                   defaultValue={30}
                   inputProps={{
@@ -208,12 +185,11 @@ const Adoptpet = () => {
                   <option value={40}>Macaw</option>
                 </NativeSelect>
               </FormControl>
-
             </Box>
+
             <Typography sx={{ marginBottom: "1rem" }} gutterBottom variant="h5" align="start">
               Please fill in your details
             </Typography>
-
 
             <Grid container spacing={1}>
               <Grid item xs={12}>
@@ -243,11 +219,10 @@ const Adoptpet = () => {
 
             </Grid>
           </form>
+
         </CardContent>
       </Card>
     </Grid>
-
   );
 }
-
 export default Adoptpet

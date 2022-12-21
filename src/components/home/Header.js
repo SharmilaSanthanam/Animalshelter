@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import { Link } from '@mui/material';
@@ -9,45 +9,26 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-// import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-// import AdbIcon from '@mui/icons-material/Adb';
 import Logo from '../../images/logo.jpg';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import Instagram from '../../images/insta.png';
-import { NavLink } from 'react-router-dom';
-// import InstagramIcon from '@mui/icons-material/Instagram';
-
-const pages = ['Home', 'Contact Us'];
-// const settings = [{LinkedInIcon}, 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
   return (
     <AppBar position="static" sx={{ bgcolor: "#EBF9FF" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
-
 
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, mr: 1 }}>
             <Avatar alt="Animal Shelter" src={Logo} />
@@ -71,12 +52,8 @@ function Header() {
           </Typography>
 
           <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' }, mr: 1 }}>
-
-            {/* <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}> */}
             <Avatar alt="Animal Shelter" src={Logo} />
-            {/* </IconButton> */}
           </Box>
-          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           <Typography
             variant="h5"
             noWrap
@@ -107,6 +84,7 @@ function Header() {
             >
               <MenuIcon />
             </IconButton>
+
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -126,15 +104,12 @@ function Header() {
               }}
             >
               <Box>
-
                 <Typography
                   variant="h6"
                   noWrap
                   component="a"
                   href="/"
-
                   sx={{
-
                     display: { xs: 'flex', md: 'none' },
                     flexGrow: 1,
                     fontFamily: 'Arial',
@@ -153,7 +128,6 @@ function Header() {
                   component="a"
                   href="/Contact"
                   sx={{
-
                     display: { xs: 'flex', md: 'none' },
                     flexGrow: 1,
                     fontFamily: 'Arial',
@@ -166,13 +140,7 @@ function Header() {
                   Contact Us
                 </Typography>
               </Box>
-              {/* {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
 
-                </MenuItem>
-
-              ))} */}
               <Box xs display="flex" justifyContent="center" alignItems="center">
                 <IconButton onClick={event => window.location.href = `https://in.linkedin.com/`} sx={{ p: 0 }}>
                   <LinkedInIcon sx={{ color: 'black' }} />
@@ -189,74 +157,25 @@ function Header() {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Link href="/" variant="h6" style={{
-paddingLeft: "20rem",
-             
+              paddingLeft: "20rem",
               fontFamily: 'Arial',
               fontWeight: 200,
               color: 'black',
               textAlign: "center",
               textDecorationColor: "black",
-
             }}>
               Home
             </Link>
-            {/* <NavLink to='/' activeClassName="active" activeStyle={{color: "black"}}
-              variant="h5"
-              style={{
 
-                display: { xs: 'none', md: 'flex' },
-                flexGrow: 1,
-                fontFamily: 'Arial',
-                fontSize: '1.5rem',
-                fontWeight: 200,
-                color: 'black',
-                textAlign: "center",   
-              }}>Home</NavLink> */}
-            {/* <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                flexGrow: 1,
-                fontFamily: 'Arial',
-                fontWeight: 300,
-                color: 'grey',
-                textDecoration: 'none',
-              }}
-            >
-              Home
-            </Typography> */}
- <Link href="/Contact" variant="h6" style={{
- 
-paddingLeft: "1rem",
-fontFamily: 'Arial',
-fontWeight: 200,
-color: 'grey',
-textDecorationLine: "none",
-
-}}>
-Contact Us
-</Link>
-            {/* <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="/Contact"
-              sx={{
-                mr: "20rem",
-                display: { xs: 'none', md: 'flex' },
-                flexGrow: 1,
-                fontFamily: 'Arial',
-                fontWeight: 300,
-                color: 'grey',
-                textDecoration: 'none',
-              }}
-            >
+            <Link href="/Contact" variant="h6" style={{
+              paddingLeft: "1rem",
+              fontFamily: 'Arial',
+              fontWeight: 200,
+              color: 'grey',
+              textDecorationLine: "none",
+            }}>
               Contact Us
-            </Typography> */}
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

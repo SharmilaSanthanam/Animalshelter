@@ -36,9 +36,9 @@ const Home = () => {
 
               <Box sx={{ textAlign: "start", marginTop: "1rem", paddingBottom: "6%", flexGrow: 0, display: { xs: 'flex', md: 'flex' }, mr: 1 }} >
                 <Grid item xs={12}>
-                  <Button type="submit"  style={{ color: "white",textTransform:"none", backgroundColor: "#FF6584", borderRadius: "5px", width: "8rem" }} fullWidth> <Link to href="/Adoptpet" color="inherit" rel="noreferrer" underline="none"> Adopt</Link></Button>
+                  <Button type="submit" style={{ color: "white", textTransform: "none", backgroundColor: "#FF6584", borderRadius: "5px", width: "8rem" }} fullWidth> <Link to href="/Adoptpet" color="inherit" rel="noreferrer" underline="none"> Adopt</Link></Button>
 
-                  <Button type="submit" style={{ color: "black",textTransform:"none", backgroundColor: "inherit", border: "1px solid black", borderRadius: "5px", width: "16rem", marginLeft: "1rem" }} fullWidth> <Link to href="/Petswehave" color="inherit" rel="noreferrer" underline="none"> What all pets do we have ?</Link></Button>
+                  <Button type="submit" style={{ color: "black", textTransform: "none", backgroundColor: "inherit", border: "1px solid black", borderRadius: "5px", width: "16rem", marginLeft: "1rem" }} fullWidth> <Link to href="/Petswehave" color="inherit" rel="noreferrer" underline="none"> What all pets do we have ?</Link></Button>
                 </Grid>
               </Box>
             </Grid>
@@ -66,13 +66,13 @@ const Home = () => {
 
               <Box sx={{ textAlign: "start", paddingLeft: "20rem", paddingBottom: "6%", flexGrow: 0, display: { xs: 'flex', md: 'none' }, mr: 1 }}>
                 <Grid item xs={12}>
-                  <Button type="submit" style={{ color: "inherit",textTransform:"none", border: "solid black 1px", borderRadius: "5px", width: "8rem" }} fullWidth> <Link to href="/Givepet" color="inherit" rel="noreferrer" underline="none"> Give Away</Link></Button>
+                  <Button type="submit" style={{ color: "inherit", textTransform: "none", border: "solid black 1px", borderRadius: "5px", width: "8rem" }} fullWidth> <Link to href="/Givepet" color="inherit" rel="noreferrer" underline="none"> Give Away</Link></Button>
                 </Grid>
               </Box>
 
               <Box sx={{ paddingBottom: "3rem", paddingLeft: "64rem", paddingTop: "1.5rem", flexGrow: 0, display: { xs: 'none', md: 'flex' }, mr: 1 }}>
                 <Grid item xs={12}>
-                  <Button type="submit" style={{ color: "inherit" ,textTransform:"none", border: "solid black 1px", borderRadius: "5px", width: "8rem" }} fullWidth> <Link to href="/Givepet" color="inherit" rel="noreferrer" underline="none"> Give Away</Link></Button>
+                  <Button type="submit" style={{ color: "inherit", textTransform: "none", border: "solid black 1px", borderRadius: "5px", width: "8rem" }} fullWidth> <Link to href="/Givepet" color="inherit" rel="noreferrer" underline="none"> Give Away</Link></Button>
                 </Grid>
               </Box>
             </Grid>

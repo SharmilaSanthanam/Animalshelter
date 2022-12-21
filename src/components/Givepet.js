@@ -1,7 +1,6 @@
-// import React from 'react';
 import React, { useState, useEffect } from "react";
-import { Box, Grid, NativeSelect, TextField, Button, Card, CardContent, Typography, IconButton} from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close'; 
+import { Box, Grid, NativeSelect, TextField, Button, Card, CardContent, Typography, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import { NavLink } from 'react-router-dom';
@@ -13,7 +12,6 @@ const idb =
   window.webkitIndexedDB ||
   window.msIndexedDB ||
   window.shimIndexedDB;
-
 
 const createCollectionsInIndexedDB = () => {
   if (!idb) {
@@ -30,7 +28,6 @@ const createCollectionsInIndexedDB = () => {
   };
 
   request.onupgradeneeded = function (event) {
-    // console.log(event);
     var db = request.result;
 
     if (!db.objectStoreNames.contains("userData")) {
@@ -52,38 +49,28 @@ const createCollectionsInIndexedDB = () => {
 
     var tx = db.transaction(["userData"], "readwrite");
     var userData = tx.objectStore("userData");
-    
+
     USER_DATA.forEach((item) => userData.add(item));
 
     return tx.complete;
   };
 };
 
-
 const Givepet = () => {
 
   const [show, setShow] = useState(true);
   const [allUsers, setAllUsers] = useState([]);
-  const [addUser, setAddUser] = useState(false);
-  // const [pet, setPet] = useState("");
-  // const [breed, setBreed] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState('');
 
-  // const handleChange = (event) => {
-  //   setPet(event.target.value);
-  //   setBreed(event.target.value);
-  // };
   useEffect(() => {
     createCollectionsInIndexedDB();
     getAllData();
-
   }, []);
 
   const getAllData = () => {
     const dbPromise = idb.open("GivepetData", 8);
-    const filteredRecords = [];
 
     dbPromise.onsuccess = () => {
       const db = dbPromise.result;
@@ -91,8 +78,6 @@ const Givepet = () => {
       var tx = db.transaction(["userData"], "readonly");
       var userData = tx.objectStore("userData");
       const users = userData.getAll();
-
-//       const dataIdIndex = userData.index("users");
 
       users.onsuccess = (query) => {
         setAllUsers(query.srcElement.result);
@@ -103,7 +88,6 @@ const Givepet = () => {
       };
 
       tx.oncomplete = function (event) {
-        // setAllUsers(users);
         db.close();
       };
     };
@@ -111,7 +95,6 @@ const Givepet = () => {
 
   const handleSubmit = (event) => {
     const dbPromise = idb.open("GivepetData", 8);
-    // console.log(userData);
     if (name && email && phone) {
       dbPromise.onsuccess = () => {
         const db = dbPromise.result;
@@ -123,8 +106,6 @@ const Givepet = () => {
 
         const users = userData.put({
           id: allUsers?.length + 1,
-          // pet,
-          // breed,
           name,
           email,
           phone,
@@ -143,20 +124,20 @@ const Givepet = () => {
         }
       }
     };
-
   };
-
 
   return (
 
     <Grid sx={{ bgcolor: "#EBF9FF" }}>
       <Card style={{ backgroundColor: "#EBF9FF", maxWidth: 580, padding: "20px 5px", margin: "0 auto" }}>
-      <IconButton
-          style={{ position: "absolute",  maxWidth: "580", marginLeft: "15rem" }}
+
+        <IconButton
+          style={{ position: "absolute", maxWidth: "580", marginLeft: "15rem" }}
           onClick={() => setShow(false)}
         >
-            <NavLink to="/"><CloseIcon /></NavLink>
+          <NavLink to="/"><CloseIcon /></NavLink>
         </IconButton>
+
         <CardContent>
           <Typography sx={{ marginBottom: "1rem" }} gutterBottom variant="h4" align="start">
             Give Away
@@ -165,11 +146,12 @@ const Givepet = () => {
           <Typography sx={{ marginBottom: "1rem" }} gutterBottom variant="h5" align="start">
             What pet do you want to give away ?
           </Typography>
+
           <form>
             <Box sx={{ marginBottom: "1rem", marginRight: "16rem" }}>
               <FormControl sx={{ width: "100%" }}>
-                <InputLabel variant="standard" htmlFor="uncontrolled-native" style={{color: "red"}} required>
-                 <span style={{color: "black"}}> Pet type</span>
+                <InputLabel variant="standard" htmlFor="uncontrolled-native" style={{ color: "red" }} required>
+                  <span style={{ color: "black" }}>Pet Type</span>
                 </InputLabel>
                 <NativeSelect
                   style={{ border: "solid 2px lightgrey" }}
@@ -184,13 +166,12 @@ const Givepet = () => {
                   <option value={30}>Dog</option>
                 </NativeSelect>
               </FormControl>
-
             </Box>
 
             <Box sx={{ marginBottom: "1rem", marginRight: "16rem" }}>
               <FormControl sx={{ width: "100%" }}>
-                <InputLabel variant="standard" htmlFor="uncontrolled-native" style={{color: "red"}} required>
-                  <span style={{color: "black"}}>Breed</span>
+                <InputLabel variant="standard" htmlFor="uncontrolled-native" style={{ color: "red" }} required>
+                  <span style={{ color: "black" }}>Breed</span>
                 </InputLabel>
                 <NativeSelect
                   style={{ border: "solid 2px lightgrey" }}
@@ -206,12 +187,11 @@ const Givepet = () => {
                   <option value={40}>Macaw</option>
                 </NativeSelect>
               </FormControl>
-
             </Box>
+
             <Typography sx={{ marginBottom: "1rem" }} gutterBottom variant="h5" align="start">
               Please fill in your details
             </Typography>
-
 
             <Grid container spacing={1}>
               <Grid item xs={12}>
@@ -232,15 +212,14 @@ const Givepet = () => {
                 </InputLabel>
                 <TextField type="number" name="phone" placeholder="Enter phone number" label="Phone" variant="outlined" onChange={(e) => setPhone(e.target.value)} value={phone} style={{ width: "55%", marginRight: "20rem", marginBottom: "1rem" }} required />
               </Grid>
-
               <Grid item xs={12}>
                 <Button type="submit"
                   onClick={handleSubmit()}
                   variant="contained" style={{ color: "white", backgroundColor: "#FF6584", borderRadius: "5px", width: "15rem", marginLeft: "18rem" }} fullWidth>REQUEST FOR ADOPTION</Button>
               </Grid>
-
             </Grid>
           </form>
+
         </CardContent>
       </Card>
     </Grid>
