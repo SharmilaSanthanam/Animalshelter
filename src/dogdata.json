@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "Name": "Lyka",
+        "Breed": "Dasch",
+        "Age": "4"
+    },
+    {
+        "id": 2,
+        "Name": "Albie",
+        "Breed": "Beagle",
+        "Age": "3"
+    },
+    {
+        "id": 3,
+        "Name": "Happy",
+        "Breed": "Lab",
+        "Age": "1"
+    },
+    {
+        "id": 4,
+        "Name": "Bruno",
+        "Breed": "Lab",
+        "Age": "3"
+    },
+    {
+        "id": 5,
+        "Name": "Ramu",
+        "Breed": "Golden Retriever",
+        "Age": "1"
+    },
+    {
+        "id": 6,
+        "Name": "Leo",
+        "Breed": "German Shephard",
+        "Age": "2"
+    },
+    {
+        "id": 7,
+        "Name": "Sweetie",
+        "Breed": "Beagle",
+        "Age": "3"
+    },
+    {
+        "id": 8,
+        "Name": "Blacky",
+        "Breed": "Dasch",
+        "Age": "1"
+    },
+    {
+        "id": 9,
+        "Name": "Ruthra",
+        "Breed": "Golden Retriever",
+        "Age": "5"
+    },
+    {
+        "id": 10,
+        "Name": "Max",
+        "Breed": "Lab",
+        "Age": "2"
+    }
+]
