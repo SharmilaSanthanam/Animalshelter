@@ -5,6 +5,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import { NavLink } from 'react-router-dom';
+import { USER_DATA } from "./data";
 
 const idb =
   window.indexedDB ||
@@ -47,12 +48,14 @@ const createCollectionsInIndexedDB = () => {
   request.onsuccess = function () {
     console.log("Database opened successfully");
 
-//     const db = request.result;
+    const db = request.result;
 
-//     var tx = db.transaction(["userData"], "readwrite");
-//     var userData = tx.objectStore("userData");
+    var tx = db.transaction(["userData"], "readwrite");
+    var userData = tx.objectStore("userData");
+    
+    USER_DATA.forEach((item) => userData.add(item));
 
-//     return tx.complete;
+    return tx.complete;
   };
 };
 
@@ -78,33 +81,33 @@ const Givepet = () => {
 
   }, []);
 
-//   const getAllData = () => {
-//     const dbPromise = idb.open("GivepetData", 8);
-//     const filteredRecords = [];
+  const getAllData = () => {
+    const dbPromise = idb.open("GivepetData", 8);
+    const filteredRecords = [];
 
-//     dbPromise.onsuccess = () => {
-//       const db = dbPromise.result;
+    dbPromise.onsuccess = () => {
+      const db = dbPromise.result;
 
-//       var tx = db.transaction(["userData"], "readonly");
-//       var userData = tx.objectStore("userData");
-//       const users = userData.getAll();
+      var tx = db.transaction(["userData"], "readonly");
+      var userData = tx.objectStore("userData");
+      const users = userData.getAll();
 
-//       const dataIdIndex = userData.index("users");
+      const dataIdIndex = userData.index("users");
 
-//       users.onsuccess = (query) => {
-//         setAllUsers(query.srcElement.result);
-//       };
+      users.onsuccess = (query) => {
+        setAllUsers(query.srcElement.result);
+      };
 
-//       users.onerror = (query) => {
-//         alert("Error ocurred while loading data ")
-//       };
+      users.onerror = (query) => {
+        alert("Error ocurred while loading data ")
+      };
 
-//       tx.oncomplete = function (event) {
-//         // setAllUsers(users);
-//         db.close();
-//       };
-//     };
-//   };
+      tx.oncomplete = function (event) {
+        // setAllUsers(users);
+        db.close();
+      };
+    };
+  };
 
   const handleSubmit = (event) => {
     const dbPromise = idb.open("GivepetData", 8);
