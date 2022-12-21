@@ -89,7 +89,7 @@ const Givepet = () => {
       var userData = tx.objectStore("userData");
       const users = userData.getAll();
 
-//       const dataIdIndex = userData.index("users");
+      const dataIdIndex = userData.index("users");
 
       users.onsuccess = (query) => {
         setAllUsers(query.srcElement.result);
@@ -119,7 +119,7 @@ const Givepet = () => {
         console.log(userData);
 
         const users = userData.put({
-          id: 1,
+          id: allUsers?.length + 1,
           // pet,
           // breed,
           name,
