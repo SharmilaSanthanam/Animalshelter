@@ -17,7 +17,13 @@ const Contact = () => {
 
         <CardContent>
           <IconButton
-            style={{ position: "absolute", maxWidth: "580", marginLeft: "15rem" }}
+            sx={{ position: "absolute", maxWidth: "580", marginLeft: "30rem", display: { xs: 'none', md: 'block' } }}
+            onClick={() => setShow(false)}
+          >
+            <NavLink to="/"><CloseIcon /></NavLink>
+          </IconButton>
+          <IconButton
+            sx={{ position: "absolute", maxWidth: "580", marginLeft: "20rem", display: { xs: 'block', md: 'none' }  }}
             onClick={() => setShow(false)}
           >
             <NavLink to="/"><CloseIcon /></NavLink>

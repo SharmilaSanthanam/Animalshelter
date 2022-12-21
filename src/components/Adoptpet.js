@@ -9,7 +9,7 @@ import { useIndexedDB } from "react-indexed-db";
 const Adoptpet = () => {
   const { add } = useIndexedDB("AdoptPetUser");
   const [show, setShow] = useState(true);
-    const [pettype, setPettype] = useState("");
+  const [pettype, setPettype] = useState("");
   const [breed, setBreed] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -36,27 +36,39 @@ const Adoptpet = () => {
 
   return (
 
-    <Grid sx={{ bgcolor: "#EBF9FF" }}>
+    <Grid sx={{ bgcolor: "#EBF9FF" }} >
       <Card style={{ backgroundColor: "#EBF9FF", maxWidth: 580, padding: "20px 5px", margin: "0 auto" }}>
 
         <IconButton
-          style={{ position: "absolute", maxWidth: "580", marginLeft: "15rem" }}
+          sx={{ position: "absolute", maxWidth: "580", marginLeft: "30rem", display: { xs: 'none', md: 'flex' } }}
+          onClick={() => setShow(false)}
+        >
+          <NavLink to="/"><CloseIcon /></NavLink>
+        </IconButton>
+        <IconButton
+          sx={{ position: "absolute", maxWidth: "580", marginLeft: "20rem", display: { xs: 'flex', md: 'none' } }}
           onClick={() => setShow(false)}
         >
           <NavLink to="/"><CloseIcon /></NavLink>
         </IconButton>
 
-        <CardContent>
-          <Typography sx={{ marginBottom: "1rem" }} gutterBottom variant="h4" align="start">
+        <CardContent >
+          <Typography sx={{ marginBottom: "1rem", display: { xs: 'none', md: 'block' } }} gutterBottom variant="h4" align="start">
+            Adopt a pet
+          </Typography>
+          <Typography sx={{ marginBottom: "1rem", display: { xs: 'block', md: 'none' } }} gutterBottom variant="h5" align="center">
             Adopt a pet
           </Typography>
 
-          <Typography sx={{ marginBottom: "1rem" }} gutterBottom variant="h5" align="start">
+          <Typography sx={{ marginBottom: "1rem", display: { xs: 'none', md: 'block' } }} gutterBottom variant="h5" align="start">
             What pet do you want to adopt ?
+          </Typography>
+          <Typography sx={{ marginBottom: "1rem", display: { xs: 'block', md: 'none' } }} gutterBottom variant="h6" align="start">
+            What pet do you want to adopt?
           </Typography>
 
           <form>
-            <Box sx={{ marginBottom: "1rem", marginRight: "16rem" }}>
+            <Box sx={{ marginBottom: "1rem", marginRight: "16rem", display: { xs: 'none', md: 'block' } }}>
               <FormControl sx={{ width: "100%" }} onChange={(e) => setPettype(e.target.value)} >
                 <InputLabel variant="standard"
                   htmlFor="uncontrolled-native" style={{ color: "red" }} required>
@@ -72,7 +84,31 @@ const Adoptpet = () => {
                   }}
                 >
                   <option disabled selected>
-                    Cat
+                    Dog
+                  </option>
+                  <option value="Cat">Cat</option>
+                  <option value="Parrot">Parrot</option>
+                  <option value="Dog">Dog</option>
+                </NativeSelect>
+              </FormControl>
+            </Box>
+            <Box sx={{ marginBottom: "1rem", display: { xs: 'block', md: 'none' } }}>
+              <FormControl sx={{ width: "100%" }} onChange={(e) => setPettype(e.target.value)} >
+                <InputLabel variant="standard"
+                  htmlFor="uncontrolled-native" style={{ color: "red" }} required>
+                  <span style={{ color: "black" }}>Pet type</span>
+                </InputLabel>
+                <NativeSelect
+                  style={{ border: "solid 2px lightgrey", borderBottom: "none" }}
+
+                  inputProps={{
+                    name: 'pet',
+                    id: 'uncontrolled-native',
+                    required: "true",
+                  }}
+                >
+                  <option disabled selected>
+                    Dog
                   </option>
                   <option value="Cat">Cat</option>
                   <option value="Parrot">Parrot</option>
@@ -81,7 +117,7 @@ const Adoptpet = () => {
               </FormControl>
             </Box>
 
-            <Box sx={{ marginBottom: "1rem", marginRight: "16rem" }}>
+            <Box sx={{ marginBottom: "1rem", display: { xs: 'block', md: 'none' } }}>
               <FormControl sx={{ width: "100%" }} onChange={(e) => setBreed(e.target.value)}>
                 <InputLabel variant="standard"
                   htmlFor="uncontrolled-native" style={{ color: "red" }} required>
@@ -89,7 +125,7 @@ const Adoptpet = () => {
                 </InputLabel>
                 <NativeSelect
                   style={{ border: "solid 2px lightgrey", borderBottom: "none" }}
-                 
+
                   inputProps={{
                     name: 'breed',
                     id: 'uncontrolled-native',
@@ -97,7 +133,32 @@ const Adoptpet = () => {
                   }}
                 >
                   <option disabled selected>
-                    Ragdoll
+                    Lab
+                  </option>
+                  <option value="Ragdoll">Ragdoll</option>
+                  <option value="German Shepherd">German Shepherd</option>
+                  <option value="Lab">Lab</option>
+                  <option value="Macaw">Macaw</option>
+                </NativeSelect>
+              </FormControl>
+            </Box>
+            <Box sx={{ marginBottom: "1rem", marginRight: "16rem", display: { xs: 'none', md: 'block' } }}>
+              <FormControl sx={{ width: "100%" }} onChange={(e) => setBreed(e.target.value)}>
+                <InputLabel variant="standard"
+                  htmlFor="uncontrolled-native" style={{ color: "red" }} required>
+                  <span style={{ color: "black" }}>Breed</span>
+                </InputLabel>
+                <NativeSelect
+                  style={{ border: "solid 2px lightgrey", borderBottom: "none" }}
+
+                  inputProps={{
+                    name: 'breed',
+                    id: 'uncontrolled-native',
+                    required: "true",
+                  }}
+                >
+                  <option disabled selected>
+                    Lab
                   </option>
                   <option value="Ragdoll">Ragdoll</option>
                   <option value="German Shepherd">German Shepherd</option>
@@ -112,26 +173,51 @@ const Adoptpet = () => {
             </Typography>
 
             <Grid container spacing={1}>
-              <Grid item xs={12}>
+              <Grid item xs={12} sx={{ display: { xs: 'none', md: 'block' } }}>
                 <InputLabel variant="standard" sx={{ textAlign: "start", fontFamily: "Montserrat" }} >
                   Full Name <span style={{ color: "red" }}>*</span>
                 </InputLabel>
                 <TextField type="name" name="name" placeholder="Enter name" label="Name" onChange={(e) => setName(e.target.value)} value={name} style={{ width: "55%", marginRight: "20rem", marginBottom: "1rem" }} required />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} sx={{ display: { xs: 'block', md: 'none' } }}>
+                <InputLabel variant="standard" sx={{ textAlign: "start", fontFamily: "Montserrat" }} >
+                  Full Name <span style={{ color: "red" }}>*</span>
+                </InputLabel>
+                <TextField type="name" name="name" placeholder="Enter name" label="Name" onChange={(e) => setName(e.target.value)} value={name} style={{ width: "100%", marginRight: "20rem", marginBottom: "1rem" }} required />
+              </Grid>
+
+              <Grid item xs={12} sx={{ textAlign: "start", display: { xs: 'none', md: 'block' } }}>
                 <InputLabel variant="standard" sx={{ textAlign: "start" }}>
                   Email <span style={{ color: "red" }}>*</span>
                 </InputLabel>
                 <TextField type="email" name="email" placeholder="Enter email" label="Email" onChange={(e) => setEmail(e.target.value)} value={email} variant="outlined" style={{ width: "55%", marginRight: "20rem", marginBottom: "1rem" }} required />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} sx={{ textAlign: "start", display: { xs: 'block', md: 'none' } }}>
                 <InputLabel variant="standard" sx={{ textAlign: "start" }}>
+                  Email <span style={{ color: "red" }}>*</span>
+                </InputLabel>
+                <TextField type="email" name="email" placeholder="Enter email" label="Email" onChange={(e) => setEmail(e.target.value)} value={email} variant="outlined" style={{ width: "100%", marginRight: "20rem", marginBottom: "1rem" }} required />
+              </Grid>
+
+              <Grid item xs={12} sx={{ textAlign: "start", display: { xs: 'none', md: 'block' } }}>
+                <InputLabel variant="standard" >
                   Phone <span style={{ color: "red" }}>*</span>
                 </InputLabel>
                 <TextField type="number" name="phone" placeholder="Enter phone number" label="Phone" variant="outlined" onChange={(e) => setPhone(e.target.value)} value={phone} style={{ width: "55%", marginRight: "20rem", marginBottom: "1rem" }} required />
               </Grid>
+              <Grid item xs={12} sx={{ textAlign: "start", display: { xs: 'block', md: 'none' } }}>
+                <InputLabel variant="standard" >
+                  Phone <span style={{ color: "red" }}>*</span>
+                </InputLabel>
+                <TextField type="number" name="phone" placeholder="Enter phone number" label="Phone" variant="outlined" onChange={(e) => setPhone(e.target.value)} value={phone} style={{ width: "100%", marginRight: "20rem", marginBottom: "1rem" }} required />
+              </Grid>
 
-              <Grid item xs={12}>
+               <Grid item xs={12} sx={{ display: { xs: 'block', md: 'none' } }}>
+                <Button type="submit"
+                  onClick={handleSubmit}
+                  variant="contained" style={{ color: "white", backgroundColor: "#FF6584", borderRadius: "5px", width: "15rem" }} fullWidth>REQUEST FOR ADOPTION</Button>
+              </Grid>
+              <Grid item xs={12} sx={{ display: { xs: 'none', md: 'block' } }}>
                 <Button type="submit"
                   onClick={handleSubmit}
                   variant="contained" style={{ color: "white", backgroundColor: "#FF6584", borderRadius: "5px", width: "15rem", marginLeft: "18rem" }} fullWidth>REQUEST FOR ADOPTION</Button>

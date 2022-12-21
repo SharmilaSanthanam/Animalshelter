@@ -25,8 +25,11 @@ const Footer = () => {
               We're recognized by the government. Please take
               a pledge to take care of those lovely pets !
             </Box>
-            <Box borderBottem={1} sx={{ textAlign: "start", paddingTop: "2rem" }}>
+            <Box borderBottem={1} sx={{ textAlign: "start", paddingTop: "2rem", display: { xs: 'none', md: 'flex' } }}>
               <Button type="submit" style={{ color: "white", textTransform: "none", backgroundColor: "#FF6584", borderRadius: "5px", width: "6rem" }} fullWidth> <Link to href="/Adoptpet" color="inherit" rel="noreferrer" underline="none"> Adopt &rarr;</Link></Button>
+            </Box>
+            <Box borderBottem={1} sx={{ justifyContent: "center", paddingTop: "2rem", display: { xs: 'flex', md: 'none' } }}>
+              <Button type="submit" style={{ color: "white", textTransform: "none", backgroundColor: "#FF6584", borderRadius: "5px", width: "14rem" }} fullWidth> <Link to href="/Adoptpet" color="inherit" rel="noreferrer" underline="none"> Adopt </Link></Button>
             </Box>
           </Grid>
 
@@ -79,9 +82,20 @@ const Footer = () => {
         </Grid>
 
         <Grid item xs={12} sm={12} >
-          <Box sx={{ color: "grey", textAlign: "start", paddingTop: "1rem" }}>
+          <Box sx={{ color: "grey", textAlign: "start", paddingTop: "1rem", display: { xs: 'block', md: 'block' } }}>
             Copyright &copy; {new Date().getFullYear()}. Animal Shelter
-            <Box sx={{ color: "#D1D5DB", textAlign: "end" }} >
+            <Box sx={{ color: "#D1D5DB", textAlign: "center", paddingTop: "1rem", display: { xs: 'flex', md: 'none' } }} >
+              <Link href="/" color="inherit">
+                Privacy Policy
+              </Link>
+              <Link href="/" color="inherit" >
+                Terms of Service
+              </Link>
+              <Link href="/" color="inherit">
+                Cookies Settings
+              </Link>
+            </Box>
+            <Box sx={{ color: "#D1D5DB", textAlign: "end", display: { xs: 'none', md: 'block' } }} >
               <Link href="/" color="inherit">
                 Privacy Policy
               </Link>

@@ -29,16 +29,23 @@ const Home = () => {
                 Welcome to the Animal Shelter !
               </Typography>
 
-              <Box borderBottem={1} sx={{ textAlign: "start", marginTop: "1rem" }}>
+              <Box borderBottem={1} sx={{ textAlign: "start", marginTop: "1rem", display: { xs: 'flex', md: 'flex' } }}>
                 Glad that you care for the animals so much. We make sure that
                 you'll not repent your decision of adopting your favorite pet !!
               </Box>
 
-              <Box sx={{ textAlign: "start", marginTop: "1rem", paddingBottom: "6%", flexGrow: 0, display: { xs: 'flex', md: 'flex' }, mr: 1 }} >
+              <Box sx={{ textAlign: "start", marginTop: "1rem", paddingBottom: "6%", flexGrow: 0, display: { xs: 'none', md: 'flex' }, mr: 1 }} >
                 <Grid item xs={12}>
                   <Button type="submit" style={{ color: "white", textTransform: "none", backgroundColor: "#FF6584", borderRadius: "5px", width: "8rem" }} fullWidth> <Link to href="/Adoptpet" color="inherit" rel="noreferrer" underline="none"> Adopt</Link></Button>
 
                   <Button type="submit" style={{ color: "black", textTransform: "none", backgroundColor: "inherit", border: "1px solid black", borderRadius: "5px", width: "16rem", marginLeft: "1rem" }} fullWidth> <Link to href="/Petswehave" color="inherit" rel="noreferrer" underline="none"> What all pets do we have ?</Link></Button>
+                </Grid>
+              </Box>
+              <Box sx={{ textAlign: "center", margin: "1rem", paddingBottom: "6%", flexGrow: 0, display: { xs: 'block', md: 'none' }, mr: 1 }} >
+                <Grid item xs={12}>
+                  <Button type="submit" style={{ color: "white", textTransform: "none", backgroundColor: "#FF6584", borderRadius: "5px", width: "16rem" }} fullWidth> <Link to href="/Adoptpet" color="inherit" rel="noreferrer" underline="none"> Adopt</Link></Button>
+
+                  <Button type="submit" style={{ color: "black", textTransform: "none", backgroundColor: "inherit", border: "1px solid black", borderRadius: "5px", width: "16rem", marginTop: "1rem" }} fullWidth> <Link to href="/Petswehave" color="inherit" rel="noreferrer" underline="none"> What all pets do we have ?</Link></Button>
                 </Grid>
               </Box>
             </Grid>
@@ -50,10 +57,21 @@ const Home = () => {
             </Grid>
 
             <Grid item xs={12} sm={12}>
-              <Box borderBottem={1} sx={{ textAlign: "end" }}>
+              <Box borderBottem={1} sx={{ textAlign: "end", display: { xs: 'none', md: 'block' } }}>
                 <h3 style={{
                   mr: 2,
-                  display: { xs: 'flex', md: 'flex' },
+                  fontFamily: 'Arial',
+                  fontWeight: 540,
+                  color: 'black',
+                  paddingBottom: '1rem',
+                }}>
+                  We do take in pets if you can't take care of them !
+                </h3>
+                Lorem epsum fbsdifcbij fkjebfkjebfkejbfewkjbfwkejbfwkefefb wef wef efnwekjfbkewjfb wkje febf weubfwef wiuefb ewfu webfuwe bfewufb efb ebf uewbfiuwefbwefweiuf wueibf iuwbefiu efewiufbwiuefbi euwbiuebfe bfe fejsdefsjnekdf ksjdnf kjsdnfkjesdnf kjsekdfjeskfjc fksdjfcekejsdfjkes efjebsf beskdb efkjebf kjbejk fbwekjsf bkewb
+              </Box>
+              <Box  sx={{ textAlign: "start", display: { xs: 'block', md: 'none' }, }}>
+                <h3 style={{
+                  mr: 2,
                   fontFamily: 'Arial',
                   fontWeight: 540,
                   color: 'black',
@@ -64,7 +82,7 @@ const Home = () => {
                 Lorem epsum fbsdifcbij fkjebfkjebfkejbfewkjbfwkejbfwkefefb wef wef efnwekjfbkewjfb wkje febf weubfwef wiuefb ewfu webfuwe bfewufb efb ebf uewbfiuwefbwefweiuf wueibf iuwbefiu efewiufbwiuefbi euwbiuebfe bfe fejsdefsjnekdf ksjdnf kjsdnfkjesdnf kjsekdfjeskfjc fksdjfcekejsdfjkes efjebsf beskdb efkjebf kjbejk fbwekjsf bkewb
               </Box>
 
-              <Box sx={{ textAlign: "start", paddingLeft: "20rem", paddingBottom: "6%", flexGrow: 0, display: { xs: 'flex', md: 'none' }, mr: 1 }}>
+              <Box sx={{ justifyContent: "center", paddingBottom: "2rem", paddingTop: "1rem", flexGrow: 0, display: { xs: 'flex', md: 'none' }, mr: 1 }}>
                 <Grid item xs={12}>
                   <Button type="submit" style={{ color: "inherit", textTransform: "none", border: "solid black 1px", borderRadius: "5px", width: "8rem" }} fullWidth> <Link to href="/Givepet" color="inherit" rel="noreferrer" underline="none"> Give Away</Link></Button>
                 </Grid>
@@ -78,9 +96,13 @@ const Home = () => {
             </Grid>
 
             <Grid item xs={12} sm={12} >
-              <Box sx={{ textAlign: "start", flexGrow: 0, paddingBottom: "6%", display: { xs: 'flex', md: 'flex' }, mr: 1 }}>
+              <Box sx={{ textAlign: "start", flexGrow: 0, paddingBottom: "1rem", display: { xs: 'none', md: 'flex' }, mr: 1 }}>
                 <img alt="Animal Shelter" src={Givepetimage} style={{ width: "15rem", height: "10rem", paddingRight: "1rem" }} />
-                Lorem epsum fbsdifcbij fkjebfkjebfkejbfewkjbfwkejbfwkefefb wef wef efnwekjfbkewjfb wkje febf weubfwef wiuefb ewfu webfuwe bfewufb efb ebf uewbfiuwefbwefweiuf wueibf iuwbefiu efewiufbwiuefbi euwbiuebfe bfe fejsdefsjnekdf ksjdnf kjsdnfkjesdnf kjsekdfjeskfjc fksdjfcekejsdfjkes efjebsf beskdb efkjebf kjbejk fbwekjsf bkewb
+               <Typography sx={{paddingTop: "2rem"}}> Lorem epsum fbsdifcbij fkjebfkjebfkejbfewkjbfwkejbfwkefefb wef wef efnwekjfbkewjfb wkje febf weubfwef wiuefb ewfu webfuwe bfewufb efb ebf uewbfiuwefbwefweiuf wueibf iuwbefiu efewiufbwiuefbi euwbiuebfe bfe fejsdefsjnekdf ksjdnf kjsdnfkjesdnf kjsekdfjeskfjc fksdjfcekejsdfjkes efjebsf beskdb efkjebf kjbejk fbwekjsf bkewb</Typography>
+              </Box>
+              <Box sx={{ textAlign: "start", flexGrow: 0, paddingBottom: "1rem", display: { xs: 'block', md: 'none' }, mr: 1 }}>
+                <img alt="Animal Shelter" src={Givepetimage} style={{ width: "15rem", height: "10rem", paddingRight: "1rem" }} />
+                <Typography sx={{paddingTop: "2rem"}}>Lorem epsum fbsdifcbij fkjebfkjebfkejbfewkjbfwkejbfwkefefb wef wef efnwekjfbkewjfb wkje febf weubfwef wiuefb ewfu webfuwe bfewufb efb ebf uewbfiuwefbwefweiuf wueibf iuwbefiu efewiufbwiuefbi euwbiuebfe bfe fejsdefsjnekdf ksjdnf kjsdnfkjesdnf kjsekdfjeskfjc fksdjfcekejsdfjkes efjebsf beskdb efkjebf kjbejk fbwekjsf bkewb</Typography>
               </Box>
             </Grid>
           </Grid>
