@@ -21,7 +21,7 @@ const createCollectionsInIndexedDB = () => {
   }
   // console.log(idb);
 
-  const request = idb.open("GivepetData", 4);
+  const request = idb.open("GivepetData", 8);
 
   request.onerror = function (event) {
     console.error("An error occurred with IndexedDB");
@@ -30,10 +30,10 @@ const createCollectionsInIndexedDB = () => {
 
   request.onupgradeneeded = function (event) {
     // console.log(event);
-    const db = request.result;
+    var db = request.result;
 
     if (!db.objectStoreNames.contains("userData")) {
-      const objectStore = db.createObjectStore("userData", {
+      var objectStore = db.createObjectStore("userData", {
         keyPath: "id"
       });
 
@@ -49,7 +49,7 @@ const createCollectionsInIndexedDB = () => {
 
     const db = request.result;
 
-    var tx = db.transaction("userData", "readwrite");
+    var tx = db.transaction(["userData"], "readwrite");
     var userData = tx.objectStore("userData");
 
     return tx.complete;
@@ -79,13 +79,13 @@ const Givepet = () => {
   }, []);
 
   const getAllData = () => {
-    const dbPromise = idb.open("GivepetData", 4);
+    const dbPromise = idb.open("GivepetData", 8);
     const filteredRecords = [];
 
     dbPromise.onsuccess = () => {
       const db = dbPromise.result;
 
-      var tx = db.transaction("userData", "readonly");
+      var tx = db.transaction(["userData"], "readonly");
       var userData = tx.objectStore("userData");
       const users = userData.getAll();
 
@@ -100,26 +100,26 @@ const Givepet = () => {
       };
 
       tx.oncomplete = function (event) {
-        setAllUsers(users);
+        // setAllUsers(users);
         db.close();
       };
     };
   };
 
   const handleSubmit = (event) => {
-    const dbPromise = idb.open("GivepetData", 4);
+    const dbPromise = idb.open("GivepetData", 8);
     // console.log(userData);
     if (name && email && phone) {
       dbPromise.onsuccess = () => {
         const db = dbPromise.result;
 
-        var tx = db.transaction("userData", "readwrite");
+        var tx = db.transaction(["userData"], "readwrite");
         var userData = tx.objectStore("userData");
 
-        // console.log(userData);
+        console.log(userData);
 
         const users = userData.put({
-          id: allUsers?.length + 1,
+          id: 1,
           // pet,
           // breed,
           name,
@@ -127,7 +127,7 @@ const Givepet = () => {
           phone,
         });
 
-        // console.log("add");
+        console.log("add");
         users.onsuccess = () => {
           tx.oncomplete = () => {
             db.close();
