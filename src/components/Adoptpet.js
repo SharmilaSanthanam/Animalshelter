@@ -89,7 +89,7 @@ const Adoptpet = () => {
       var userData = tx.objectStore("userData");
       const users = userData.getAll();
 
-//       const dataIdIndex = userData.index("users");
+      const dataIdIndex = userData.index("users");
 
       users.onsuccess = (query) => {
         setAllUsers(query.srcElement.result);
